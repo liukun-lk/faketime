@@ -45,3 +45,7 @@ func main() {
 	fmt.Println(time.Now()) // 2009-11-10 23:00:00 +0000 UTC
 }
 ```
+
+
+solution to "syscall.Mprotect panic: permission denied" on macOS Catalina 10.15.x
+https://github.com/eisenxp/macos-golink-wrapper
