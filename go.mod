@@ -1,4 +1,4 @@
-module github.com/tkuchiki/faketime
+module github.com/liukun-lk/faketime
 
 go 1.16
 
