@@ -10,8 +10,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/tkuchiki/faketime"
 	"time"
+
+	"github.com/liukun-lk/faketime"
 )
 
 func main() {
@@ -32,20 +33,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/tkuchiki/faketime"
 	"time"
+
+	"github.com/liukun-lk/faketime"
 )
 
 func main() {
 	fmt.Println(time.Now()) // 2017-06-07 18:59:35.01959464 +0900 JST
-    t := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
+  t := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 	f := faketime.NewFaketimeWithTime(t)
 	defer f.Undo()
 	f.Do()
 	fmt.Println(time.Now()) // 2009-11-10 23:00:00 +0000 UTC
 }
 ```
-
-
-solution to "syscall.Mprotect panic: permission denied" on macOS Catalina 10.15.x
-https://github.com/eisenxp/macos-golink-wrapper

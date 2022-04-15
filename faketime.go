@@ -3,11 +3,11 @@ package faketime
 import (
 	"time"
 
-	"bou.ke/monkey"
+	"github.com/agiledragon/gomonkey/v2"
 )
 
 type faketime struct {
-	nowPatch *monkey.PatchGuard
+	nowPatch *gomonkey.Patches
 	year     int
 	month    time.Month
 	day      int
@@ -39,7 +39,7 @@ func NewFaketimeWithTime(t time.Time) *faketime {
 }
 
 func (f *faketime) Do() {
-	f.nowPatch = monkey.Patch(time.Now, func() time.Time {
+	f.nowPatch = gomonkey.NewPatches().ApplyFunc(time.Now, func() time.Time {
 		if f.time.IsZero() {
 			return time.Date(f.year, f.month, f.day, f.hour, f.min, f.sec, f.nsec, f.loc)
 		}
@@ -49,5 +49,5 @@ func (f *faketime) Do() {
 }
 
 func (f *faketime) Undo() {
-	f.nowPatch.Unpatch()
+	f.nowPatch.Reset()
 }
